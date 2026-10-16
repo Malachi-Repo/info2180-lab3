@@ -27,4 +27,15 @@ document.addEventListener("DOMContentLoaded", function() {
             turn = "X";
         }
     });
+    brd.addEventListener("mouseover", function(e){
+        if(e.target.classList.contains("square")){
+            e.target.classList.add("hover");
+        }
+    });
+
+    brd.addEventListener("mouseout", function(e){
+        if(e.target.classList.contains("square")){
+            e.target.classList.remove("hover");
+        }
+    });
 });
