@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
     const brd = document.getElementById("board");
     const status = document.getElementById("status");
 
+
+
+    const newGame = document.querySelector(".btn");   // check this matches your button
+    const startText = status.textContent;             // saved so New Game can reset
+
     let turn = "X";
     let over = false;
-    const arr = ["", "", "", "", "", "", "", "", ""];   // 9 slots, not []
+    const arr = ["", "", "", "", "", "", "", "", ""];   // 9 spots for the tic tak
 
     const lines = [ // combinations where you can win with 3 line up
         [0, 1, 2], [3, 4, 5], [6, 7, 8],   
@@ -61,5 +67,18 @@ document.addEventListener("DOMContentLoaded", function() {
         if(e.target.classList.contains("square")){
             e.target.classList.remove("hover");
         }
+    });
+
+
+     newGame.addEventListener("click", function(){ // Exercise 5
+        for(let i = 0; i < brd.children.length; i++){
+            brd.children[i].textContent = "";
+            brd.children[i].classList.remove("X", "O", "hover");
+            arr[i] = "";
+        }
+        turn = "X";
+        over = false;
+        status.textContent = startText;
+        status.classList.remove("you-won");
     });
 });
